@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-
 import { device } from './utils/device';
 
 const Global = createGlobalStyle`
@@ -10,9 +9,9 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     outline:0;
-    box-sizing:border-box;
-    font-family: 'Open Sans', sans-serif; 
+    box-sizing: border-box;
 }
+
 #root{
     margin: 0 auto;
 }
@@ -20,8 +19,8 @@ const Global = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: 'light',
-    secondary: 'night',
+    primary: 'red',
+    secondary: 'blue',
   },
   media: {
     phone: device.mobileL,
@@ -30,14 +29,18 @@ const theme = {
   },
 };
 
-const rootElement = document.getElementById('root') as HTMLElement;
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Global />
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
-);
+let container: HTMLElement;
+document.addEventListener('DOMContentLoaded', function (event) {
+  if (!container) {
+    container = document.getElementById('root') as HTMLElement;
+    const root = ReactDOM.createRoot(container);
+    root.render(
+      <React.StrictMode>
+        <ThemeProvider theme={theme}>
+          <Global />
+          <App />
+        </ThemeProvider>
+      </React.StrictMode>
+    );
+  }
+});
