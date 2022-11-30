@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import App from './components/App';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+import { device } from './utils/device';
 
 const Global = createGlobalStyle`
 *{
@@ -18,19 +20,18 @@ const Global = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: 'red',
-    secondary: 'blue',
+    primary: 'light',
+    secondary: 'night',
   },
   media: {
-    phone: '(min-width: 425px)',
-    tablet: '(min-width: 768px)',
-    desktop: '(min-width: 1280px)',
+    phone: device.mobileL,
+    tablet: device.tablet,
+    desktop: device.laptopM,
   },
 };
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const rootElement = document.getElementById('root') as HTMLElement;
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <React.StrictMode>

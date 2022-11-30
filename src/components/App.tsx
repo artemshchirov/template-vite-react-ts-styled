@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-width: 100vh;
-  min-height: 100vw;
+  width: 100%;
+  min-height: 100vh;
 
   display: flex;
   justify-content: space-evenly;
@@ -16,13 +16,21 @@ export const Container = styled.div`
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #b9d2d6;
+  background: darkgreen;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  @media ${(props) => props.theme.media.tablet} {
+    background: grey;
+  }
+
+  @media ${(props) => props.theme.media.desktop} {
+    background: #b9d2d6;
+  }
 `;
 
 const App: FC = () => {
@@ -34,4 +42,3 @@ const App: FC = () => {
 };
 
 export default App;
-let test;
